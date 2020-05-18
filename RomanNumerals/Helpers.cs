@@ -42,6 +42,20 @@ namespace RomanNumerals
             return result;
         }
 
+        public static bool CheckQuintupleCharacterRepetionErrors(this string numeral)
+        {
+            if (numeral.Length < 2) return false;
+
+            var quintupleCharacters = "VLD";
+
+            var result = numeral
+                        .Where((c, i) => i >= 1 && numeral[i - 1] == c && quintupleCharacters.Contains(c))
+                        .Any();
+
+            return result;
+        }
+
+
         public static bool CheckAllowedCharacterErrors(this string numeral)
         {
             var allowedCharacters = "IVXLCDM";

@@ -14,9 +14,12 @@ namespace RomanNumerals
                 throw new ArgumentException("Not roman numeral. Invalid characters in the input.");
 
             if (numeral.CheckCharacterRepetionErrors())
-                throw new ArgumentException("Not roman numeral. Invalid character repetition.");
+                throw new ArgumentException("Not roman numeral. Invalid character repetition more than three character in row.");
 
-            if(numeral.CheckCharacterOrderErrors())
+            if (numeral.CheckQuintupleCharacterRepetionErrors())
+                throw new ArgumentException("Not roman numeral. Invalid character repetition for quintuple characters.");
+
+            if (numeral.CheckCharacterOrderErrors())
                 throw new ArgumentException("Not roman numeral. Invalid character order.");
 
             return numeral;

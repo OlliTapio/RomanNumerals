@@ -37,6 +37,30 @@ namespace RomanNumeralUnitTests
             Assert.IsFalse(result);
         }
 
+        [DataTestMethod]
+        [DataRow("DDasDD")]
+        [DataRow("MDDX")]
+        [DataRow("LL")]
+        [DataRow("VVV")]
+        public void ShouldReturnTrueForQuintupleCharacterRepetionError(string numeral)
+        {
+            var result = Helpers.CheckQuintupleCharacterRepetionErrors(numeral);
+
+            Assert.IsTrue(result);
+        }
+
+        [DataTestMethod]
+        [DataRow("II")]
+        [DataRow("MM")]
+        [DataRow("MDCCCIII")]
+        [DataRow("xxdasw2gdfghtruxxxasfdawaxxx")]
+        [DataRow("MDCCCX")]
+        public void ShouldReturnFalseForQuintupleCharacterRepetionError(string numeral)
+        {
+            var result = Helpers.CheckQuintupleCharacterRepetionErrors(numeral);
+
+            Assert.IsFalse(result);
+        }
 
         [DataTestMethod]
         [DataRow("ssssss")]
