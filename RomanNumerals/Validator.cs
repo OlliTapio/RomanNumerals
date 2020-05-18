@@ -22,6 +22,9 @@ namespace RomanNumerals
             if (numeral.CheckCharacterOrderErrors())
                 throw new ArgumentException("Not roman numeral. Invalid character order.");
 
+            if (numeral.CheckSubstractionErrors())
+                throw new ArgumentException("Not roman numeral. Substracting more than is allowed.");
+
             return numeral;
         }
     }

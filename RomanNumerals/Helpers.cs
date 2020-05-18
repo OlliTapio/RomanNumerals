@@ -73,5 +73,25 @@ namespace RomanNumerals
             }
             return false;
         }
+
+        public static bool CheckSubstractionErrors(this string numeral)
+        {
+            foreach (var character in numeral.Select((value, index) => new { value, index }))
+            {
+                var substring = numeral.Substring(character.index);
+                var greaterChar = substring.FirstOrDefault(x => x.IsGreater(character.value));
+                var indexOfGreater = substring.IndexOf(greaterChar);
+
+                if (indexOfGreater == -1)
+                    continue;
+
+                var substractionPart = substring.Substring(0, indexOfGreater);
+
+                if (substractionPart.Where((c, i) => i >= 1 && substractionPart[i - 1] == c).Any())
+                    return true;
+            }
+            return false;
+        }
+
     }
 }

@@ -110,6 +110,30 @@ namespace RomanNumeralUnitTests
             Assert.IsFalse(result);
         }
 
+        [DataTestMethod]
+        [DataRow("IIX")]
+        [DataRow("VVX")]
+        [DataRow("MIVLLM")]
+        public void ShouldReturnTrueForSubstractionError(string numeral)
+        {
+            var result = Helpers.CheckSubstractionErrors(numeral);
+
+            Assert.IsTrue(result);
+        }
+
+
+        [DataTestMethod]
+        [DataRow("DCLXVI")]
+        [DataRow("MDCCCCX")]
+        [DataRow("MMMCMXCIX")]
+        public void ShouldReturnFalseForSubstractionError(string numeral)
+        {
+            var result = Helpers.CheckSubstractionErrors(numeral);
+
+            Assert.IsFalse(result);
+        }
+
+
 
     }
 }
